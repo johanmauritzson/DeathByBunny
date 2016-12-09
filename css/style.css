@@ -1,0 +1,19 @@
+#gameArea {
+	background-color: #555;
+	height: 800px;
+}
+.upgrades{
+	background-color: #12e;
+	height: 600px;
+	margin-top: 2%
+}
+.mainArea{
+	background-color: #1ee;
+	height: 600px;
+	margin-top: 2%
+}
+.stats{
+	background-color: #e2e;
+	height: 600px;
+	margin-top: 2%
+}
