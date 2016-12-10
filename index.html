@@ -17,26 +17,70 @@
   <script src="js/app.js"></script>
 
 </head>
-<body>
+<body onload="countTimer()">
 	<div class="container">
 		<div class="row" id="gameArea">
 			<h2>Death By Bunny</h2>	
 			<div class="col-md-3 upgrades center">
-				<h2>Upgrades</h2>
+				<h2>Army</h2>
 				
 				<h4>Carrots: <span id="carrots">0</span></h4>
 				<h6>Carrots/click: <span id="carrotsPClick">1</span></h6>
 				<br />
-				<button onclick="buyBunnies()">Moar Bunnies</button>
+				<button onclick="buyBunnies()">Civilian Bunny</button>
 				<br />
-				<h4>Bunnies: <span id="bunnies">0</span></h4>
-				<h4>Bunny Cost: <span id="bunnyCost">10</span></h4>
+				<h6>Civilian Bunnies: <span id="bunnies">0</span></h6>
+				<h6>Civilian Bunny Cost: <span id="bunnyCost">10</span></h6>
 				<br />
-				<button onclick="buyGuns()">Moar Guns</button>
+				<button onclick="buyPrivate()">Private Bunny, First Class</button>
 				<br />
-				<h4>Guns: <span id="guns">0</span></h4>
-				
-				<h4>Gun Cost: <span id="gunCost">500</span></h4>
+				<h6>Private Bunnies: <span id="private">0</span></h6>
+				<h6>Private Bunnies Cost: <span id="privateCost">2000</span></h6>
+				<br />
+				<button onclick="buyCorporal()">Corporal Bunny</button>
+				<br />
+				<h6>Corporal Bunnies: <span id="corporal">0</span></h6>
+				<h6>Corporal Bunnies Cost: <span id="corporalCost">35000</span></h6>
+				<br />
+				<button onclick="buySergeant()">Sergeant Bunny</button>
+				<br />
+				<h6>Sergeant Bunnies: <span id="sergeant">0</span></h6>
+				<h6>Sergeant Bunnies Cost: <span id="sergeantCost">1000000</span></h6>
+				<br />
+				<button onclick="buyMasterSergeant()">Master Sergeant Bunny</button>
+				<br />
+				<h6>Master Sergeant Bunnies: <span id="masterSergeant">0</span></h6>
+				<h6>Master Sergeant Bunnies Cost: <span id="masterSergeantCost">300000</span></h6>
+				<br />
+				<button onclick="buyFirstLiet()">First Lieutenant Bunny</button>
+				<br />
+				<h6>First Lieutenant Bunnies: <span id="firstLieutenant">0</span></h6>
+				<h6>First Lieutenant Bunnies Cost: <span id="firstLieutenantCost">800000</span></h6>
+				<br />
+				<button onclick="buyCaptain()">Captain Bunny</button>
+				<br />
+				<h6>Captain Bunnies: <span id="captain">0</span></h6>
+				<h6>Captain Bunnies Cost: <span id="captainCost">1500000</span></h6>
+				<br />
+				<button onclick="buyMajor()">Major Bunny</button>
+				<br />
+				<h6>Major Bunnies: <span id="major">0</span></h6>
+				<h6>Major Bunnies Cost: <span id="majorCost">5000000</span></h6>
+				<br />
+				<button onclick="buyColonel()">Colonel Bunny</button>
+				<br />
+				<h6>Colonel Bunnies: <span id="colonel">0</span></h6>
+				<h6>Colonel Bunnies Cost: <span id="colonelCost">10000000</span></h6>
+				<br />
+				<button onclick="buyMajorGeneral()">Major General Bunny</button>
+				<br />
+				<h6>Major General Bunnies: <span id="majorGeneral">0</span></h6>
+				<h6>Major General Bunnies Cost: <span id="majorGeneralCost">20000000</span></h6>
+				<br />
+				<button onclick="buyGeneral()">General Bunny</button>
+				<br />
+				<h6>General Bunnies: <span id="general">0</span></h6>
+				<h6>General Bunnies Cost: <span id="generalCost">50000000</span></h6>
 				
 			</div>
 			<div class="col-md-6 mainArea center">
@@ -46,6 +90,21 @@
 				<br />
 			</div>
 			<div class="col-md-3 stats center">
+				<h2>Upgrades</h2>
+				<button onclick="doubleDamage()">Moar Damage</button>
+				<br />
+				<h4>Boosts owned: <span id="dmgUpgrades">0</span></h4>
+				<h4>Boost Cost: <span id="dmgBoostCost">50000</span></h4>
+				<br />
+				<button onclick="reduceTime()">Moar DPS</button>
+				<br />
+				<h4>Time reduced: <span id="timerUpgrades">0</span></h4>
+				<h4>Reduction Cost: <span id="timerCost">100</span></h4>
+				<br />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
 				<h2>Stats</h2>
 				<h6>Total Clicks: <span id="totalClicks">0</span></h6>
 				<h6>Total Carrots: <span id="totalCarrots">0</span></h6>

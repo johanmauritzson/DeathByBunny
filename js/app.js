@@ -2,23 +2,66 @@
 var carrots = 0;
 //Lifetime carrots earned
 var noCarrots = 0;
-//Number of bunnies you own
+//Number of civilians you own
 var bunnies = 0;
-//Number of guns you own
-var guns = 0;
+//Number of Privates you own
+var private = 0;
+//Number of Corporals you own
+var corporal = 0;
+//Number of Sergeants you own
+var sergeant = 0;
+//Number of Master Sergeants you own
+var masterSergeant = 0;
+//Number of First Lieutenants you own
+var firstLieutenant = 0;
+//Number of Captains you own
+var captain = 0;
+//Number of Majors you own
+var major = 0;
+//Number of Colonels you own
+var colonel = 0;
+//Number of Major Generals you own
+var majorGeneral = 0;
+//Number of Generals you own
+var general = 0;
+
+
 //Number och carrots per click
 var totalBunnies = 1;
 //Lifetime clicks
 var totalClicks = 0;
-//DPS for guns
-var gunPower = 0;
+//DPS for Privates
+var privatePower = 0;
+//DPS for Corporals
+var corporalPower = 0;
+//DPS for Sergeants
+var sergeantPower = 0;
+//DPS for Master Sergeant
+var masterSergeantPower = 0;
+//DPS for First Lieutenants
+var firstLieutenantPower = 0;
+//DPS for Captains
+var captainPower = 0;
+//DPS for Majors
+var majorPower = 0;
+//DPS for Colonels
+var colonelPower = 0;
+//DPS for Major Generals
+var majorGeneralPower = 0;
+//DPS for Generals
+var generalPower = 0;
 
 //GameTime Total
 var totalTime = 0;
+//Counts how many total army bunnies you have
+var totalArmy = 0;
+var totalDps = 0;
 
 //On click increase number of carrots to spend
 function carrotClicks(totalBunnies){
-    totalBunnies = totalBunnies + bunnies + gunPower;                   //Sets power of clicks per second
+    totalBunnies = totalBunnies + bunnies;                              //Sets power of clicks per second
+    totalBunnies = totalBunnies * dmgRatio;
+    totalArmy = bunnies + private;
     carrots = carrots + totalBunnies;                                   //Increments carrot to spend
     noCarrots = noCarrots + totalBunnies;                               //Total carrots earned during game
     document.getElementById("carrots").innerHTML = carrots;
@@ -28,13 +71,24 @@ function carrotClicks(totalBunnies){
 
 };
 
+function dpsCounter(totalDps){
+    totalDps = totalDps + privatePower+corporalPower+sergeantPower+masterSergeantPower+firstLieutenantPower+captainPower+majorPower+colonelPower+majorGeneralPower+generalPower;
+    totalDps = totalDps * dmgRatio;
+    carrots = carrots + totalDps;                                   //Increments carrot to spend
+    noCarrots = noCarrots + totalDps;                               //Total carrots earned during game
+    document.getElementById("carrots").innerHTML = carrots;
+    document.getElementById("totalCarrots").innerHTML = noCarrots;      //Print total carrots earned
+    totalClicks += 1;
+    document.getElementById("totalClicks").innerHTML = totalClicks;
+};
+
 //Counts time spent playing
 function countTime() {
     totalTime += 1;
     document.getElementById("totalTime").innerHTML = totalTime;
 };
 
-//Buy 1 bunny and increment its total cost
+//Buy 1 Civilian and increment its total cost
 function buyBunnies(){
     var bunnyCost = Math.floor(10 * Math.pow(1.52,bunnies));     //works out the cost of this cursor
     if(carrots >= bunnyCost){                                   //checks that the player can afford the cursor
@@ -48,22 +102,180 @@ function buyBunnies(){
 
 };
 
-//Buy 1 gun and increment its total cost
-function buyGuns(){
-	var gunCost = Math.floor(50 * Math.pow(1.52,guns));
-	if(carrots >= gunCost){
-		guns = guns + 1;
-        gunPower = gunPower + 5;
-		carrots = carrots - gunCost;
-		document.getElementById('guns').innerHTML = guns;
+//Buy 1 Private and increment its total cost
+function buyPrivate(){
+	var privateCost = Math.floor(2000 * Math.pow(1.52,private));
+	if(carrots >= privateCost){
+		private = private + 1;
+        privatePower = privatePower + 5;
+		carrots = carrots - privateCost;
+		document.getElementById('private').innerHTML = private;
 		document.getElementById('carrots').innerHTML = carrots;
 	};
-	var nextGunCost = Math.floor(50 * Math.pow(1.52,guns));
-	document.getElementById('gunCost').innerHTML = nextGunCost;
+	var nextprivateCost = Math.floor(2000 * Math.pow(1.52,private));
+	document.getElementById('privateCost').innerHTML = nextprivateCost;
 };
+
+//Buy 1 Corporal and increment its total cost
+function buyCorporal(){
+    var corporalCost = Math.floor(35000 * Math.pow(1.52,corporal));
+    if(carrots >= corporalCost){
+        corporal = corporal + 1;
+        corporalPower = corporalPower + 15;
+        carrots = carrots - corporalCost;
+        document.getElementById('corporal').innerHTML = corporal;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextcorporalCost = Math.floor(35000 * Math.pow(1.52,corporal));
+    document.getElementById('corporalCost').innerHTML = nextcorporalCost;
+};
+//Buy 1 Sergeant and increment its total cost
+function buySergeant(){
+    var sergeantCost = Math.floor(100000 * Math.pow(1.52,sergeant));
+    if(carrots >= sergeantCost){
+        sergeant = sergeant + 1;
+        sergeantPower = sergeantPower + 25;
+        carrots = carrots - sergeantCost;
+        document.getElementById('sergeant').innerHTML = sergeant;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextsergeantCost = Math.floor(100000 * Math.pow(1.52,sergeant));
+    document.getElementById('sergeantCost').innerHTML = nextsergeantCost;
+};
+//Buy 1 Master Sergeant and increment its total cost
+function buyMasterSergeant(){
+    var masterSergeantCost = Math.floor(300000 * Math.pow(1.52,masterSergeant));
+    if(carrots >= masterSergeantCost){
+        masterSergeant = masterSergeant + 1;
+        masterSergeantPower = masterSergeantPower + 40;
+        carrots = carrots - masterSergeantCost;
+        document.getElementById('masterSergeant').innerHTML = masterSergeant;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextmasterSergeantCost = Math.floor(300000 * Math.pow(1.52,masterSergeant));
+    document.getElementById('masterSergeantCost').innerHTML = nextmasterSergeantCost;
+};
+//Buy 1 First Lieutenant and increment its total cost
+function buyFirstLieutenant(){
+    var firstLieutenantCost = Math.floor(800000 * Math.pow(1.52,firstLieutenant));
+    if(carrots >= firstLieutenantCost){
+        firstLieutenant = firstLieutenant + 1;
+        firstLieutenantPower = firstLieutenantPower + 60;
+        carrots = carrots - firstLieutenantCost;
+        document.getElementById('firstLieutenant').innerHTML = firstLieutenant;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextfirstLieutenantCost = Math.floor(800000 * Math.pow(1.52,firstLieutenant));
+    document.getElementById('firstLieutenantCost').innerHTML = nextfirstLieutenantCost;
+};
+//Buy 1 Captain and increment its total cost
+function buyCaptain(){
+    var captainCost = Math.floor(1500000 * Math.pow(1.52,captain));
+    if(carrots >= captainCost){
+        captain = captain + 1;
+        captainPower = captainPower + 100;
+        carrots = carrots - captainCost;
+        document.getElementById('captain').innerHTML = captain;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextcaptainCost = Math.floor(1500000 * Math.pow(1.52,captain));
+    document.getElementById('captainCost').innerHTML = nextcaptainCost;
+};
+//Buy 1 Major and increment its total cost
+function buyMajor(){
+    var majorCost = Math.floor(5000000 * Math.pow(1.52,major));
+    if(carrots >= majorCost){
+        major = major + 1;
+        majorPower = majorPower + 150;
+        carrots = carrots - majorCost;
+        document.getElementById('major').innerHTML = major;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextmajorCost = Math.floor(5000000 * Math.pow(1.52,major));
+    document.getElementById('majorCost').innerHTML = nextmajorCost;
+};
+//Buy 1 Colonel and increment its total cost
+function buyColonel(){
+    var colonelCost = Math.floor(10000000 * Math.pow(1.52,colonel));
+    if(carrots >= colonelCost){
+        colonel = colonel + 1;
+        colonelPower = colonelPower + 225;
+        carrots = carrots - colonelCost;
+        document.getElementById('colonel').innerHTML = colonel;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextcolonelCost = Math.floor(10000000 * Math.pow(1.52,colonel));
+    document.getElementById('colonelCost').innerHTML = nextcolonelCost;
+};
+//Buy 1 Major General and increment its total cost
+function buyMajorGeneral(){
+    var majorGeneralCost = Math.floor(20000000 * Math.pow(1.52,majorGeneral));
+    if(carrots >= majorGeneralCost){
+        majorGeneral = majorGeneral + 300;
+        majorGeneralPower = majorGeneralPower + 5;
+        carrots = carrots - majorGeneralCost;
+        document.getElementById('majorGeneral').innerHTML = majorGeneral;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextmajorGeneralCost = Math.floor(20000000 * Math.pow(1.52,majorGeneral));
+    document.getElementById('majorGeneralCost').innerHTML = nextmajorGeneralCost;
+};
+//Buy 1 General and increment its total cost
+function buyGeneral(){
+    var generalCost = Math.floor(50000000 * Math.pow(1.52,general));
+    if(carrots >= generalCost){
+        general = general + 1;
+        generalPower = generalPower + 500;
+        carrots = carrots - generalCost;
+        document.getElementById('general').innerHTML = general;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextgeneralCost = Math.floor(50000000 * Math.pow(1.52,general));
+    document.getElementById('generalCost').innerHTML = nextgeneralCost;
+};
+
+//Reduce the clicking time by 25%
+var quarterTime = 0.75;
+var dpsTimer = 4000;
+var timerUpgrades = 0;
+//Double your total damage
+var dmgBoost = 0;
+var dmgRatio = 1;
+var dmgUpgrades = 0;
+//Add 10 seconds to boss timer
+var timerBoost = 10000;
+
+function doubleDamage(){
+    var dmgBoostCost = Math.floor(50000 * Math.pow(10,dmgUpgrades));
+    if(carrots >= dmgBoostCost){
+        dmgUpgrades = dmgUpgrades + 1;
+        dmgRatio = dmgRatio * 2;
+        carrots = carrots - dmgBoostCost;
+        document.getElementById("dmgUpgrades").innerHTML = dmgUpgrades;
+        document.getElementById("carrots").innerHTML = carrots;
+    };
+    var nextDmgCost = Math.floor(50000 * Math.pow(10, dmgUpgrades));
+    document.getElementById("dmgBoostCost").innerHTML = nextDmgCost;
+};
+
+/*function reduceTime(){
+    var timerCost = Math.floor(10 * Math.pow(2.5,timerUpgrades));
+    if(carrots >= timerCost){
+        timerUpgrades = timerUpgrades + 1;
+        dpsTimer = dpsTimer - 2000;
+        carrots = carrots - timerCost;
+        document.getElementById("timerUpgrades").innerHTML = timerUpgrades;
+        document.getElementById("carrots").innerHTML = carrots;
+    };
+    var nextTimerCost = Math.floor(10 * Math.pow(2.5, timerUpgrades));
+    document.getElementById("timerCost").innerHTML = timerCost;
+};*/
 
 //Runs time spent loop each second
 window.setInterval(function(){
 	countTime();
+    if(private >= 1){
+        dpsCounter(totalDps);
+    };
 }, 1000);
 
