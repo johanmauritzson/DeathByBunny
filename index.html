@@ -14,9 +14,23 @@
   <!-- JS FILES -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="js/app.js"></script>
+ 
 
 </head>
 <body>
+
+	<button onclick="carrotClick(1)">Click Me!</button>
+		<br />
+		Carrots: <span id="carrots">0</span>
+		<br />
+		<button onclick="buyUpgrade()">Buy Cursor</button>
+		<br />
+		Upgrade: <span id="upgrades">0</span>
+		<br />
+		Upgrade Cost: <span id="upgradeCost">10</span>
+		<script type="text/javascript" src="js/enemy.js"></script>
+
+
 	<div class="container">
 		<div class="row" id="gameArea">
 			<h2>Death By Bunny</h2>	
@@ -31,5 +45,8 @@
 			</div>
 		</div>
 	</div>
+
+	
+
 </body>
 </html>
