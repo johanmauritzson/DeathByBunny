@@ -1,32 +1,40 @@
 #gameArea {
 	background-color: #555;
-	height: 800px;
+	height: 1228px;
 }
 .upgrades{
-	background-color: #333;
-	margin-top: 2%
-}
-.mainArea{
 	background-color: #888;
+	background-image: url("C:/users/johan/deathbybunny/img/paperRoll.png");
+	background-size: 290px 1228px;
+	margin-top: 2%;
+	background-repeat: no-repeat;
+	color: #444 !important;
+}
+
+.mainArea{
+	background-color: #858585;
 	height: 600px;
-	margin-top: 2%
+	margin-top: 2%;
 }
 .stats{
+	height: 1228px;
 	background-color: #333;
-	height: 600px;
-	margin-top: 2%
+	background-image: url("C:/users/johan/deathbybunny/img/paperRoll.png");
+	margin-top: 2%;
+	background-size: 292px 1228px;
+	background-repeat: no-repeat;
 }
 .center{
 	text-align: center;
 }
 .center>h2{
-	color: #FFF;
+	color: #444;
 }
 .center>h4{
-	color: #FFF;
+	color: #444;
 }
 .center>h6{
-	color: #FFF;
+	color: #444;
 }
 .padd{
 	margin-top: 5%;

@@ -1,5 +1,5 @@
 //Carrots to spend
-var carrots = 0;
+var carrots = 2000;
 //Lifetime carrots earned
 var noCarrots = 0;
 //Number of civilians you own
@@ -57,6 +57,11 @@ var totalTime = 0;
 var totalArmy = 0;
 var totalDps = 0;
 
+var hp = 10;
+var defeated = 0;
+var overallDamage = 0;
+var lvlMulti = 1;
+
 //On click increase number of carrots to spend
 function carrotClicks(totalBunnies){
     totalBunnies = totalBunnies + bunnies;                              //Sets power of clicks per second
@@ -68,7 +73,6 @@ function carrotClicks(totalBunnies){
     document.getElementById("totalCarrots").innerHTML = noCarrots;      //Print total carrots earned
     totalClicks += 1;
     document.getElementById("totalClicks").innerHTML = totalClicks;
-
 };
 
 function dpsCounter(totalDps){
@@ -80,6 +84,15 @@ function dpsCounter(totalDps){
     document.getElementById("totalCarrots").innerHTML = noCarrots;      //Print total carrots earned
     totalClicks += 1;
     document.getElementById("totalClicks").innerHTML = totalClicks;
+
+    console.log("current hp: " + hp);
+    console.log("Current lvl: " + lvlMulti);
+
+    hp = hp - totalDps;
+    if (hp<=0) {
+        damage();
+    }
+
 };
 
 //Counts time spent playing
@@ -87,6 +100,37 @@ function countTime() {
     totalTime += 1;
     document.getElementById("totalTime").innerHTML = totalTime;
 };
+
+function damage(){
+    defeated += 1;
+    console.log("1 död")
+    
+    console.log("Antal besegrade: " + defeated);
+    if (defeated == 5) {
+        lvlMulti += 1;
+        defeated = 0;
+        hp = 10 * lvlMulti * defeated;
+    }else{
+        hp = 10 * lvlMulti * defeated;
+    }
+   
+}
+
+function levelProgress(){
+    
+
+
+    
+}
+
+//Runs time spent loop each second
+window.setInterval(function(){
+    countTime();
+    if(private >= 1){
+        dpsCounter(totalDps);
+    };
+    
+}, 1000);
 
 //Buy 1 Civilian and increment its total cost
 function buyBunnies(){
@@ -245,6 +289,7 @@ var dmgUpgrades = 0;
 //Add 10 seconds to boss timer
 var timerBoost = 10000;
 
+
 function doubleDamage(){
     var dmgBoostCost = Math.floor(50000 * Math.pow(10,dmgUpgrades));
     if(carrots >= dmgBoostCost){
@@ -258,24 +303,5 @@ function doubleDamage(){
     document.getElementById("dmgBoostCost").innerHTML = nextDmgCost;
 };
 
-/*function reduceTime(){
-    var timerCost = Math.floor(10 * Math.pow(2.5,timerUpgrades));
-    if(carrots >= timerCost){
-        timerUpgrades = timerUpgrades + 1;
-        dpsTimer = dpsTimer - 2000;
-        carrots = carrots - timerCost;
-        document.getElementById("timerUpgrades").innerHTML = timerUpgrades;
-        document.getElementById("carrots").innerHTML = carrots;
-    };
-    var nextTimerCost = Math.floor(10 * Math.pow(2.5, timerUpgrades));
-    document.getElementById("timerCost").innerHTML = timerCost;
-};*/
 
-//Runs time spent loop each second
-window.setInterval(function(){
-	countTime();
-    if(private >= 1){
-        dpsCounter(totalDps);
-    };
-}, 1000);
 
