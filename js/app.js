@@ -1,17 +1,23 @@
 //Carrots to spend
-var carrots = 0;
+var carrots = 1000;
 //Lifetime carrots earned
 var noCarrots = 0;
 //Number of bunnies you own
 var bunnies = 0;
 //Number of guns you own
 var guns = 0;
+
+var guns2 = 0;
 //Number och carrots per click
 var totalBunnies = 1;
 //Lifetime clicks
 var totalClicks = 0;
 //DPS for guns
 var gunPower = 0;
+
+
+
+
 
 //GameTime Total
 var totalTime = 0;
@@ -60,6 +66,19 @@ function buyGuns(){
 	};
 	var nextGunCost = Math.floor(50 * Math.pow(1.52,guns));
 	document.getElementById('gunCost').innerHTML = nextGunCost;
+};
+
+function buyGuns2(){
+    var gunCost2 = Math.floor(1000 * Math.pow(1.52,guns2));
+    if(carrots >= gunCost2){
+        guns2 = guns2 + 1;
+        gunPower = gunPower + 10;
+        carrots = carrots - gunCost2;
+        document.getElementById('guns2').innerHTML = guns2;
+        document.getElementById('carrots').innerHTML = carrots;
+    };
+    var nextGunCost2 = Math.floor(1000 * Math.pow(1.52,guns2));
+    document.getElementById('gunCost2').innerHTML = nextGunCost2;
 };
 
 //Runs time spent loop each second
